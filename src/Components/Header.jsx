@@ -1,47 +1,49 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCircleUser, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
-  const [Show,setHide] = useState(false);
+const Header = ({ toggle, setToggle, Hide, setHide }) => {
   return (
-    // its First Navbar and also is use for default purpose <nav className="w-full bg-zinc-300 shadow-md">
-    <nav className="w-full bg-[#0f172a] text-white shadow-md">
-      <div className="mx-auto flex h-16 max-w-7xl justify-between items-center px-1">
-        <section className=''>
-          <div >
-            <span className='flex justify-between gap-2'>
-              <a className='hover:bg-[#34d399] p-5 cursor-pointer'>Dashboard</a>
-              <a className='hover:bg-[#34d399] p-5 cursor-pointer'>Account Overview</a>
-              <a className='hover:bg-[#34d399] p-5 cursor-pointer'>Income & Expenses</a>
-              <a className='hover:bg-[#34d399] p-5 cursor-pointer'>About</a>
-            </span>
-          </div>
-        </section>
-        <section>
-          <div className='flex justify-between items-center '>
-            <div className='p-1'>
-              <FontAwesomeIcon icon={faPlus} className='text-3xl' />
+    <>
+      <nav className={`relative w-full ${toggle == true ? "bg-[#0f172a] text-white " : "bg-zinc-300 text-black "} shadow-md`}>
+        <div className="mx-auto flex h-16 max-w-7xl justify-between items-center px-1">
+          <section className=''>
+            <div >
+              <span className='flex justify-between gap-2'>
+                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}><Link to="/">Dashboard</Link></a>
+                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Account Overview</a>
+                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Income & Expenses</a>
+                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>About</a>
+              </span>
             </div>
-            <div className=' p-2'>
-              <FontAwesomeIcon icon={faBell} className='text-3xl' />
+          </section>
+          <section>
+            <div className='flex justify-between items-center gap-2'>
+              <div className='p-1'>
+                <FontAwesomeIcon icon={faPlus} className='text-3xl cursor-pointer' />
+              </div>
+              <div className='p-3'>
+                <FontAwesomeIcon icon={faBell} className='text-3xl cursor-pointer' onClick={() => setHide(!Hide)} />
+              </div>
+              <div>
+                <div className='flex p-2 gap-1'>
+                  <p className='font-bold text-sm pt-1 cursor-pointer'>Name</p>
+                  <Link to="/Signup"><FontAwesomeIcon icon={faCircleUser} className='text-3xl cursor-pointer' /></Link>
+                </div>
+              </div>
+              <div className='w-fit h-auto flex justify-center items-center '>
+                <button className={`relative w-10 h-5 rounded-full cursor-pointer bg-[#7F7F7F] border-[#7F7F7F] transition-colors duration-300 ${toggle ? "bg-green-500" : "bg-[7F7F7F]"}`} onClick={() => setToggle(!toggle)}>
+                  <div className={`absolute text-white w-4 h-4 bg-white rounded-full p-1 left-0.5 top-0.5 transition-transform duration-400 ${toggle ? "translate-x-5" : "translate-x-0"}`}>
+                  </div>
+                </button>
+              </div>
             </div>
-            <div className='flex p-2 gap-1'>
-              <p className='text-white font-bold text-sm pt-1'>Name</p>
-              <FontAwesomeIcon icon={faCircleUser} className='text-3xl' />
-              {Show && (
-                <AnimateView transition={{ type: spring }}>
-                  <div className="modal" />
-                </AnimateView>
-              )}
-              <button></button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </nav>
-
+          </section>
+        </div>
+      </nav>
+    </>
   )
 }
 
