@@ -8,18 +8,19 @@ import Main from "./Components/Main.jsx";
 import {Route,Routes} from "react-router-dom"
 
 import Footer from "./Components/Footer.jsx";
-import SignupPage from "./Pages/SignupPage.jsx"
+import Register  from "./Pages/Register.jsx"
 
 function App() {
   const [toggle, setToggle] = useState(false);
   const [Hide,setHide] = useState(false)
-
+  const [Userhide,setUserhide] = useState(false)
+  const [Username,setUsername] = useState("")
   return (
     <>
-      <Header toggle={toggle} setToggle={setToggle} Hide={Hide} setHide={setHide}/>
+      <Header toggle={toggle} setToggle={setToggle} Hide={Hide} setHide={setHide} Username={Username}/>
     <Routes>
       <Route path='/' element={<Main toggle={toggle} Hide={Hide} setHide={setHide}/>}/>
-      <Route path='/Signup' element={<SignupPage/>}/>
+      <Route path='/register' element={<Register toggle={toggle} Username={Username} setUsername={setUsername}/>}/>
       {/* <Route/>
       <Route/> */}
       </Routes>
