@@ -38,7 +38,7 @@ const Header = ({ toggle, setToggle, Hide, setHide }) => {
                 <Link to="/" className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Dashboard</Link>
                 <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Account Overview</a>
                 <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Income & Expenses</a>
-                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>About</a>
+                <Link to="/About" className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>About</Link>
               </span>
             </div>
           </section>

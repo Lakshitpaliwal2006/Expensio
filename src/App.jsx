@@ -9,6 +9,7 @@ import {Route,Routes} from "react-router-dom"
 
 import Footer from "./Components/Footer.jsx";
 import Register  from "./Pages/Register.jsx"
+import About from './Pages/About.jsx';
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -21,8 +22,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Main toggle={toggle} Hide={Hide} setHide={setHide}/>}/>
       <Route path='/register' element={<Register toggle={toggle} Username={Username} setUsername={setUsername}/>}/>
-      {/* <Route/>
-      <Route/> */}
+       <Route path='/About' element={<About toggle={toggle}/>}/>
+      {/* <Route/> */}
       </Routes>
     </>
   )
