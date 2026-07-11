@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCircleUser, faPlus, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({ toggle, setToggle, Hide, setHide }) => {
+const Header = ({ toggle, setToggle, Hide, setHide, isActive, setisActive }) => {
   const username = localStorage.getItem("username")
+  const location = useLocation()
+
   return (
     <>
       {/* <div class="fixed top-0 left-0 w-full z-50 space-y-2 p-4">
@@ -30,15 +32,15 @@ const Header = ({ toggle, setToggle, Hide, setHide }) => {
 
       </div> */}
 
-      <nav className={`relative w-full ${toggle == true ? "bg-[#0f172a] text-white " : "bg-zinc-300 text-black "} shadow-md`}>
-        <div className="mx-auto flex h-16 max-w-7xl justify-between items-center px-1">
+      <nav className={`relative w-full ${toggle == true ? "bg-[#0f172a] text-white " : "bg-purple-600 text-black "} shadow-md`}>
+        <div className="mx-auto flex h-fit max-w-7xl justify-between items-center px-1">
           <section className=''>
             <div >
-              <span className='flex justify-between gap-2'>
-                <Link to="/" className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Dashboard</Link>
-                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Account Overview</a>
-                <a className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>Income & Expenses</a>
-                <Link to="/About" className={`${toggle == true ? "hover:bg-[#121212] text-white " : "hover:bg-zinc-50 text-zinc-700 "} p-5 cursor-pointer font-bold`}>About</Link>
+              <span className='flex justify-between'>
+                <Link to="/" className={`${toggle ? location.pathname === "/" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Dashboard</Link>
+                <Link to="/account-overview" className={`${toggle ? location.pathname === "/account-overview" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/account-overview" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Account Overview</Link>
+                <Link to="/finance-overview" className={`${toggle ? location.pathname === "/finance-overview" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/finance-overview" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Income & Expenses</Link>
+                <Link to="/about" className={`${toggle ? location.pathname === "/about" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/about" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>About</Link>
               </span>
             </div>
           </section>
