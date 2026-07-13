@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import { User } from "../Models/User.models.js"
+import Finance from "../Models/Finance.model.js"
 
 const app = express();
-const PORT = 4000
+const PORT = 3000
 
 
 app.use(cors({
@@ -14,8 +15,8 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/',(req,res)=>{
-    res.send("Home Page");
+app.get('/test', (req, res) => {
+    res.send("This is Testing Page and its Working");
 })
 
 app.post("/register", async (req, res) => {
@@ -41,7 +42,21 @@ app.post("/register", async (req, res) => {
         });
     }
 });
+app.get('/finance', async (req, res) => {
+    try {
+        const response = await Finance.find({})
+        res.status(200).json({
+            message: response
+        })
+    } catch (error) {
+        console.log("Error:", error);
 
+        res.status(500).json({
+            message: "Some Error in Fetching Data",
+            error: error.message
+        });
+    }
+})
 const StartServer = async () => {
     try {
         await mongoose.connect("mongodb://127.0.0.1:27017/register");
@@ -57,4 +72,4 @@ const StartServer = async () => {
     }
 };
 
-StartServer();
+export default StartServer();

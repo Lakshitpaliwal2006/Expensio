@@ -2,14 +2,14 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub, faFacebookF } from "@fortawesome/free-brands-svg-icons"
-import axios, { formToJSON } from "axios";
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 const Register = ({ toggle, Username, setUsername }) => {
     const navigate = useNavigate()
     const [formData, setformData] = useState({
         name: "",
-        email: "",
+        email: "", 
         password: "",
         confirmpassword: ""
     })

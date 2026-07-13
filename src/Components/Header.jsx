@@ -38,8 +38,8 @@ const Header = ({ toggle, setToggle, Hide, setHide, isActive, setisActive }) => 
             <div >
               <span className='flex justify-between'>
                 <Link to="/" className={`${toggle ? location.pathname === "/" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Dashboard</Link>
-                <Link to="/account-overview" className={`${toggle ? location.pathname === "/account-overview" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/account-overview" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Account Overview</Link>
                 <Link to="/finance-overview" className={`${toggle ? location.pathname === "/finance-overview" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/finance-overview" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Income & Expenses</Link>
+                <Link to="/account-overview" className={`${toggle ? location.pathname === "/account-overview" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/account-overview" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>Account Overview</Link>
                 <Link to="/about" className={`${toggle ? location.pathname === "/about" ? "bg-[#121212] text-white" : "hover:bg-[#121212] text-white" : location.pathname === "/about" ? "bg-zinc-100 text-zinc-700" : "hover:bg-zinc-50 text-zinc-900"} p-5 cursor-pointer font-bold text-sm flex items-center`}>About</Link>
               </span>
             </div>
