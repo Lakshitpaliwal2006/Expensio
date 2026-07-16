@@ -3,9 +3,14 @@ import express from "express";
 import cors from "cors";
 import { User } from "../Models/User.models.js"
 import Finance from "../Models/Finance.model.js"
+const PORT = 4001;
 
 const app = express();
-const PORT = 3000
+
+// const MIN_PORT = 3000;
+// const MAX_PORT = 9000;
+
+// const PORT = Math.floor(Math.random() * (MAX_PORT - MIN_PORT + 1)) + MIN_PORT;
 
 
 app.use(cors({
@@ -45,9 +50,7 @@ app.post("/register", async (req, res) => {
 app.get('/finance', async (req, res) => {
     try {
         const response = await Finance.find({})
-        res.status(200).json({
-            message: response
-        })
+        res.json(response)
     } catch (error) {
         console.log("Error:", error);
 

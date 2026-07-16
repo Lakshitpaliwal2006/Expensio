@@ -25,7 +25,6 @@ const Register = ({ toggle, Username, setUsername }) => {
             // console.log(formData.email);
 
         }
-
         // const response = await fetch('http://127.0.0.1:5000/register', {
         //     method: "POST",
         //     headers: {
@@ -37,8 +36,9 @@ const Register = ({ toggle, Username, setUsername }) => {
         //         password: formData.password
         //     })
         // });
+
         try {
-            const response = await axios.post("http://127.0.0.1:4000/register", {
+            const response = await axios.post("http://127.0.0.1:4001/register", {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
