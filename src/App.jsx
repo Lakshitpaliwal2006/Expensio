@@ -16,19 +16,9 @@ import axios from 'axios';
 
 
 function App() {
-  const [toggle, setToggle] = useState(false);
-  const [Hide, setHide] = useState(false)
-  const [Userhide, setUserhide] = useState(false)
-  const [isActive, setisActive] = useState(false)
-  const [Username, setUsername] = useState("");
-  const [Data, setData] = useState([])
-  const [open, setOpen] = useState(false);
-  const [Plus, setPlus] = useState(false)
-
-
   const financeData = async () => {
     try {
-      const response = await axios.get('http://localhost:5003/finance')
+      const response = await axios.get('http://localhost:3050/finance')
       setData(response.data)
 
     } catch (error) {
@@ -40,13 +30,13 @@ function App() {
   }, []);
   return (
     <>
-      <Header toggle={toggle} setToggle={setToggle} Hide={Hide} setHide={setHide} Username={Username} isActive={isActive} setisActive={setisActive} open={open} setOpen={setOpen} Plus={Plus} setPlus={setPlus} />
+      <Header />
       <Routes>
-        <Route path='/' element={<Main toggle={toggle} Hide={Hide} setHide={setHide} Data={Data} />} />
-        <Route path='/finance-overview' element={<Income_Expenses toggle={toggle} Hide={Hide} setHide={setHide} Data={Data} />} />
-        <Route path='/overview' element={<Overview toggle={toggle} />} />
-        <Route path='/register' element={<Register toggle={toggle} Username={Username} setUsername={setUsername} />} />
-        <Route path='/about' element={<About toggle={toggle} />} />
+        <Route path='/' element={<Main />} />
+        <Route path='/finance-overview' element={<Income_Expenses />} />
+        <Route path='/overview' element={<Overview />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/about' element={<About />} />
       </Routes>
     </>
   )

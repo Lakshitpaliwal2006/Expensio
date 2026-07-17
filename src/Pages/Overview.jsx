@@ -1,6 +1,8 @@
 import React from "react";
-
-const Overview = ({ toggle }) => {
+import { FinanceContext } from "../Contexts/FinanceContext";
+import { useContext } from "react";
+const Overview = () => {
+  const {toggle, setToggle} = useContext(FinanceContext);
   return (
     <div className={`min-h-screen ${toggle == true ? "bg-slate-500" : "bg-gray-100"} flex justify-center py-10`}>
       <div className={`w-198 min-h-280 ${toggle == true ? "bg-zinc-600 text-white" : "bg-white"} shadow-lg px-24 py-20`}>

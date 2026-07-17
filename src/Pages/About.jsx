@@ -1,5 +1,7 @@
-
-const About = ({ toggle }) => {
+import { useContext } from "react";
+import { FinanceContext } from "../Contexts/FinanceContext";
+const About = () => {
+    const { toggle, setToggle } = useContext(FinanceContext);
     return (
         <div className={`${toggle == true ? "bg-gray-800 text-[#FAF8F5]" : "bg-[#FAF8F5] text-gray-800"} font-sans min-h-screen`}>
 

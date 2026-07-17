@@ -3,20 +3,23 @@ import express from "express";
 import cors from "cors";
 import { User } from "../Models/User.models.js"
 import Finance from "../Models/Finance.model.js"
-const PORT = 5003;
+// import dotenv from "dotenv";
 
+// dotenv.config({
+//     path: '/.env',
+//     quiet: true
+// });
 const app = express();
-
-// const MIN_PORT = 3000;
-// const MAX_PORT = 9000;
-
-// const PORT = Math.floor(Math.random() * (MAX_PORT - MIN_PORT + 1)) + MIN_PORT;
-
+const PORT = 3050
 
 app.use(cors({
     origin: "*",
     credentials: true
 }));
+
+// const MIN_PORT = 3000;
+// const MAX_PORT = 9000;
+// const PORT = Math.floor(Math.random() * (MAX_PORT - MIN_PORT + 1)) + MIN_PORT;
 
 app.use(express.json());
 

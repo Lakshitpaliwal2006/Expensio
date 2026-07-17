@@ -1,11 +1,14 @@
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub, faFacebookF } from "@fortawesome/free-brands-svg-icons"
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { FinanceContext } from '../Contexts/FinanceContext';
 
-const Register = ({ toggle, Username, setUsername }) => {
+const Register = () => {
+    const { toggle, setToggle } = useContext(FinanceContext);
+    const { Username, setUsername } = useContext(FinanceContext);
     const navigate = useNavigate()
     const [formData, setformData] = useState({
         name: "",
@@ -27,7 +30,7 @@ const Register = ({ toggle, Username, setUsername }) => {
             localStorage.setItem("username", Username)
             navigate("/")
             window.location.reload();
-            
+
             // console.log(formData.name)
             // console.log(formData.password);
             // console.log(formData.email);
@@ -45,7 +48,7 @@ const Register = ({ toggle, Username, setUsername }) => {
         // });
 
         try {
-            const response = await axios.post("http://127.0.0.1:5003/register", {
+            const response = await axios.post("http://127.0.0.1:3050/register", {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
