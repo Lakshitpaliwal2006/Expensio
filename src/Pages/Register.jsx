@@ -9,7 +9,7 @@ const Register = ({ toggle, Username, setUsername }) => {
     const navigate = useNavigate()
     const [formData, setformData] = useState({
         name: "",
-        email: "", 
+        email: "",
         password: "",
         confirmpassword: ""
     })
@@ -18,12 +18,19 @@ const Register = ({ toggle, Username, setUsername }) => {
         e.preventDefault();
         if (formData.password.trim() !== formData.confirmpassword.trim()) {
             alert('password is not matched')
-        } else {
+        }
+        else if (!Allfields) {
+            console.log("Please fill all Fields");
+        }
+        else {
             alert('Logged in successfully')
+            localStorage.setItem("username", Username)
+            navigate("/")
+            window.location.reload();
+            
             // console.log(formData.name)
             // console.log(formData.password);
             // console.log(formData.email);
-
         }
         // const response = await fetch('http://127.0.0.1:5000/register', {
         //     method: "POST",
@@ -38,7 +45,7 @@ const Register = ({ toggle, Username, setUsername }) => {
         // });
 
         try {
-            const response = await axios.post("http://127.0.0.1:4001/register", {
+            const response = await axios.post("http://127.0.0.1:5003/register", {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
@@ -50,12 +57,6 @@ const Register = ({ toggle, Username, setUsername }) => {
         } catch (error) {
             console.error(error);
         }
-
-        localStorage.setItem("username", Username)
-        navigate("/")
-
-
-        window.location.reload();
     }
 
     const handleChange = (data) => {

@@ -2,129 +2,36 @@ import mongoose from "mongoose";
 
 const financeSchema = new mongoose.Schema(
   {
-    date: {
+    Date: {
       type: Date,
-      required: true
+      required: true,
     },
-
-    user_id: {
-      type: Number,
-      required: true
-    },
-
-    monthly_income: {
-      type: Number,
-      required: true
-    },
-
-    monthly_expense_total: {
-      type: Number,
-      required: true
-    },
-
-    savings_rate: {
-      type: Number,
-      default: 0
-    },
-
-    budget_goal: {
-      type: Number,
-      default: 0
-    },
-
-    financial_scenario: {
+    TransactionDescription: {
       type: String,
-      enum: ["inflation", "normal", "recession"],
-      default: "normal"
+      required: true,
+      trim: true,
     },
-
-    credit_score: {
-      type: Number
-    },
-
-    debt_to_income_ratio: {
-      type: Number
-    },
-
-    loan_payment: {
-      type: Number,
-      default: 0
-    },
-
-    investment_amount: {
-      type: Number,
-      default: 0
-    },
-
-    subscription_services: {
-      type: Number,
-      default: 0
-    },
-
-    emergency_fund: {
-      type: Number,
-      default: 0
-    },
-
-    transaction_count: {
-      type: Number,
-      default: 0
-    },
-
-    fraud_flag: {
-      type: Number,
-      enum: [0, 1],
-      default: 0
-    },
-
-    discretionary_spending: {
-      type: Number,
-      default: 0
-    },
-
-    essential_spending: {
-      type: Number,
-      default: 0
-    },
-
-    income_type: {
+    Category: {
       type: String,
-      default: "Salary"
+      required: true,
+      trim: true,
     },
-
-    rent_or_mortgage: {
+    Amount: {
       type: Number,
-      default: 0
+      required: true,
     },
-
-    category: {
-      type: String
-    },
-
-    cash_flow_status: {
+    Type: {
       type: String,
-      enum: ["Positive", "Negative"],
-      default: "Positive"
+      enum: ["Income", "Expense"],
+      required: true,
     },
-
-    financial_advice_score: {
+    ExpenditureAmount: {
       type: Number,
-      min: 0,
-      max: 10
+      default: 0,
     },
-
-    financial_stress_level: {
-      type: String,
-      enum: ["Low", "Medium", "High"]
-    },
-
-    actual_savings: {
-      type: Number,
-      default: 0
-    }
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

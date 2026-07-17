@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { User } from "../Models/User.models.js"
 import Finance from "../Models/Finance.model.js"
-const PORT = 4001;
+const PORT = 5003;
 
 const app = express();
 
@@ -60,6 +60,16 @@ app.get('/finance', async (req, res) => {
         });
     }
 })
+// app.get('/financedata', async (req, res) => {
+//     try {
+//         const response = await financedata.find({})
+//         res.json(response)
+//     } catch (error) {
+//         console.log("Error:", error);
+//         error: error.message;
+
+//     }
+// })
 const StartServer = async () => {
     try {
         await mongoose.connect("mongodb://127.0.0.1:27017/register");

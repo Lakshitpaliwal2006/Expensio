@@ -4,8 +4,8 @@ const About = ({ toggle }) => {
         <div className={`${toggle == true ? "bg-gray-800 text-[#FAF8F5]" : "bg-[#FAF8F5] text-gray-800"} font-sans min-h-screen`}>
 
             <section className="px-6 py-20 text-center max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-5xl font-bold text-[#E95D22] mb-6 tracking-tight">
-                    At EXPENSIO.com, we believe everyone deserves to have a website or Project.
+                <h1 className="text-3xl md:text-3xl font-bold text-[#E95D22] mb-6 tracking-tight">
+                    Your first line of support, available 24/7. Chat with Concierge in the Expensio app or email contact@expensio.com for responses in minutes
                 </h1>
 
                 <p className={`text-lg md:text-xl ${toggle == true ? "text-zinc-100" : "text-gray-clear600"} leading-relaxed max-w-3xl mx-auto mt-12`}>
@@ -30,14 +30,10 @@ const About = ({ toggle }) => {
                 </div>
 
 
-                <div className="relative bg-slate-200 flex items-center justify-center min-h-[350px] lg:min-h-full">
+                <div className="relative bg-white flex items-center justify-center min-h-[350px] lg:min-h-full">
 
-                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-900/20 to-blue-900/30">
-                        <h2 className="text-4xl md:text-6xl font-bold text-white tracking-wide drop-shadow-md z-10">
-                            Out Image
-                        </h2>
-
-                        <img src="" alt="Our Story Background" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-white w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-900/20 to-blue-900/30">
+                        <img src="/public/images.png" alt="Our Story Background" className="absolute inset-0 w-full h-full object-contain" />
                     </div>
 
                 </div>
