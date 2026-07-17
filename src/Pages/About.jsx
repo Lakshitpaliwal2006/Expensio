@@ -35,7 +35,7 @@ const About = () => {
                 <div className="relative bg-white flex items-center justify-center min-h-[350px] lg:min-h-full">
 
                     <div className="absolute inset-0 bg-white w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-900/20 to-blue-900/30">
-                        <img src="/public/images.png" alt="Our Story Background" className="absolute inset-0 w-full h-full object-contain" />
+                        <img src="/images.png" alt="Our Story Background" className="absolute inset-0 w-full h-full object-contain" />
                     </div>
 
                 </div>
