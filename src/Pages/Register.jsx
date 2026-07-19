@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub, faFacebookF } from "@fortawesome/free-brands-svg-icons"
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner';
 import { FinanceContext } from '../Contexts/FinanceContext';
 
 const Register = () => {
@@ -19,17 +20,19 @@ const Register = () => {
     const handleSubmit = async (e) => {
         const Allfields = Object.values(formData).every((value) => value.trim() !== "");
         e.preventDefault();
-        if (formData.password.trim() !== formData.confirmpassword.trim()) {
-            alert('password is not matched')
+        if (!Allfields) {
+            toast.warning("warning : Please fill all fields");
         }
-        else if (!Allfields) {
-            console.log("Please fill all Fields");
+        else if (formData.password.trim() !== formData.confirmpassword.trim()) {
+            toast.error("Password does not match");
         }
         else {
-            alert('Logged in successfully')
-            localStorage.setItem("username", Username)
+            localStorage.setItem("username", Username || "Guest")
             navigate("/")
-            window.location.reload();
+            toast.success('Account created successfully!')
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
 
             // console.log(formData.name)
             // console.log(formData.password);

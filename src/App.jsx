@@ -13,6 +13,7 @@ import About from './Pages/About.jsx';
 import Overview from './Pages/Overview.jsx';
 import Income_Expenses from './Pages/Income_Expenses.jsx';
 import axios from 'axios';
+import { toast, Toaster } from 'sonner';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
   }, []);
   return (
     <>
+      {/* <button onClick={() => toast.success('register')}>Click</button> */}
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />
