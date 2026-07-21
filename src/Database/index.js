@@ -3,12 +3,11 @@ import express from "express";
 import cors from "cors";
 import { User } from "../Models/User.models.js"
 import Finance from "../Models/Finance.model.js"
-// import dotenv from "dotenv";
+import dotenv, { configDotenv } from "dotenv"
 
-// dotenv.config({
-//     path: '/.env',
-//     quiet: true
-// });
+dotenv.configDotenv({
+    path: '../../.env'
+})
 const app = express();
 const PORT = 3050
 
@@ -78,8 +77,8 @@ const StartServer = async () => {
         await mongoose.connect("mongodb://127.0.0.1:27017/register");
         console.log("Mongoose Connected Successfully");
 
-        app.listen(PORT, () => {
-            console.log(`Server is listening on port ${PORT}`);
+        app.listen(process.env.PORT_NO, () => {
+            console.log(`Server is listening on port ${process.env.PORT_NO}`);
         });
 
     } catch (error) {

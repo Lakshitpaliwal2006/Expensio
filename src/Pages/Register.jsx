@@ -6,6 +6,12 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Toaster, toast } from 'sonner';
 import { FinanceContext } from '../Contexts/FinanceContext';
+import nodemailer from "nodemailer"
+import dotenv, { configDotenv } from "dotenv"
+
+dotenv.configDotenv({
+    path:'../../.env'
+})
 
 const Register = () => {
     const { toggle, setToggle } = useContext(FinanceContext);
@@ -51,7 +57,7 @@ const Register = () => {
         // });
 
         try {
-            const response = await axios.post("http://127.0.0.1:3050/register", {
+            const response = await axios.post(`http://127.0.0.1:${process.env.PORT_NO}/register`, {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
@@ -80,8 +86,52 @@ const Register = () => {
                             <span className='text-3xl font-semibold text-[#1C6C93] m-2 tracking-tight inline-block'><strong className='text-[#2D4E63] mr-2 pl-2'>Signup</strong>to EXPENSIO</span>
                             <span className='text-black tracking-tight inline-block'>Have an account?<strong className='mr-1 pl-1 underline'>Login here!</strong></span>
                         </div>
+                        {true && <div className='grid items-center w-fit h-auto p-5 rounded-2xl'>
+                            <h2 className="text-center text-2xl font-bold text-black">
+                                Email Verification
+                            </h2>
 
-                        <div className='grid items-center w-fit h-auto p-5 rounded-2xl'>
+                            <form className="mt-6 space-y-5">
+                                <div>
+                                    <div className="mb-2 flex items-center justify-between">
+                                        <label className='text-[#708A9E] text-sm'>
+                                            Email Address
+                                        </label>
+
+                                        <button
+                                            type="button"
+                                            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+                                        >
+                                            Send Code
+                                        </button>
+                                    </div>
+                                    <input onChange={handleChange} value={formData.email} name='email' type="text" placeholder='E-mail address' className="w-full rounded-lg border border-gray-300 px-4 py-3 tracking-widest outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+                                </div>
+
+                                <div>
+                                    <label className='text-[#708A9E] text-sm'>
+                                        OTP
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        maxLength={6}
+                                        placeholder="Enter 6-digit OTP"
+                                        className="w-full rounded-lg border border-gray-300 px-4 py-3 tracking-widest outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                                    />
+                                </div>
+
+                                <button
+                                    type='submit'
+                                    className="hover:shadow-zinc-300 hover:cursor-pointer flex w-full font-mono h-auto justify-center rounded-lg bg-[#535454] px-5 py-2.5 text-white shadow-[inset_0_1px_2px_rgba(255,255,255,0.26)] transition-colors duration-150 select-none"
+                                    role="button"
+                                >
+                                    Verify OTP
+                                </button>
+                            </form>
+                        </div>
+                        }
+                        {false && <div className='grid items-center w-fit h-auto p-5 rounded-2xl'>
                             <form onSubmit={handleSubmit} className='flex flex-col w-fit h-auto p-5 rounded-2xl gap-1'>
                                 <label className='text-[#708A9E] text-sm'>Username</label>
                                 <input onChange={(e) => setUsername(e.target.value)} value={Username} type="text" placeholder='Username' min={6} max={10} className='placeholder:text-[#708A9E] placeholder:text-light shadow-[0 1px 2px 0 rgba(0, 0, 0, 0.05)] w-fit h-auto p-1 text-gray-700 font-medium shadow-3xl border border-[#DFDFDF] pl-2 rounded-sm focus:border-zinc-600 focus:outline-hidden' />
@@ -107,7 +157,7 @@ const Register = () => {
                                 <div className='flex w-full font-mono items-center h-auto justify-between rounded-lg bg-zinc-200 px-6 py-2.5 text-black text-xs font-medium shadow-[inset_0_1px_2px_rgba(255,255,255,0.26)] transition-colors duration-150s select-none gap-2'> Sign up with facebook <p className='p-1'><FontAwesomeIcon icon={faFacebookF} className='text-xs' /></p></div>
                                 <div className='flex w-full font-mono items-center h-auto justify-between rounded-lg bg-zinc-200 px-6 py-2.5 text-black text-xs font-medium shadow-[inset_0_1px_2px_rgba(255,255,255,0.26)] transition-colors duration-150s select-none gap-2'> Sign up with Gthub <p className='p-1'><FontAwesomeIcon icon={faGithub} className='text-xs' /></p></div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                     <div className='w-100 h-auto text-[15spx] justify-center gap-1 p-1 font-medium'>
                         <span>By using Spendee you agree with Spendee’s</span>

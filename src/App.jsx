@@ -14,12 +14,16 @@ import Overview from './Pages/Overview.jsx';
 import Income_Expenses from './Pages/Income_Expenses.jsx';
 import axios from 'axios';
 import { toast, Toaster } from 'sonner';
-
+import nodemailer from "nodemailer"
+import dotenv, { configDotenv } from "dotenv"
+dotenv.configDotenv({
+  path: '../.env'
+})
 
 function App() {
   const financeData = async () => {
     try {
-      const response = await axios.get('http://localhost:3050/finance')
+      const response = await axios.get(`http://localhost:${process.env.PORT_NO}/finance`)
       setData(response.data)
 
     } catch (error) {
