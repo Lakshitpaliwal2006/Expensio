@@ -185,7 +185,7 @@ const Main = () => {
                       label: 'Financial Assets',
                       data: [CurrentBalance, CurrentIncome, CurrentExpense],
                       backgroundColor: ['#6366f1', '#22c55e', '#ef4444'],
-                      borderRadius: 8,
+                      borderRadius: 4,
                       barThickness: 32,
                     },
                   ],

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import heroImg from './assets/hero.png';
@@ -14,16 +14,15 @@ import Overview from './Pages/Overview.jsx';
 import Income_Expenses from './Pages/Income_Expenses.jsx';
 import axios from 'axios';
 import { toast, Toaster } from 'sonner';
-import nodemailer from "nodemailer"
 import dotenv, { configDotenv } from "dotenv"
-dotenv.configDotenv({
-  path: '../.env'
-})
+const API_URL = import.meta.env.VITE_API_URL;
+import { FinanceContext } from './Contexts/FinanceContext.jsx';
 
 function App() {
+  const {Data,setData} = useContext(FinanceContext);
   const financeData = async () => {
     try {
-      const response = await axios.get(`http://localhost:${process.env.PORT_NO}/finance`)
+      const response = await axios.get(`${API_URL}/finance`)
       setData(response.data)
 
     } catch (error) {
