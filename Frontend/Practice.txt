@@ -1,0 +1,111 @@
+
+import { useContext, useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faGithub, faFacebookF } from "@fortawesome/free-brands-svg-icons"
+import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner';
+import { FinanceContext } from '../Contexts/FinanceContext';
+const API_URL = import.meta.env.VITE_API_URL;
+console.log(API_URL);
+
+const Register = () => {
+    const { toggle, setToggle } = useContext(FinanceContext);
+    const { Username, setUsername } = useContext(FinanceContext);
+    const navigate = useNavigate()
+    const [formData, setformData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        confirmpassword: ""
+    })
+    console.log(formData.email.trim())
+    // try {
+    //     MailTransporter.sendMail({
+    //         sender:formData.email.trim()
+    //     })
+    // } catch (error) {
+
+    // }
+    const handleSubmit = async (e) => {
+        const Allfields = Object.values(formData).every((value) => value.trim() !== "");
+        e.preventDefault();
+        if (!Allfields) {
+            toast.warning("warning : Please fill all fields");
+        }
+        else if (formData.password.trim() !== formData.confirmpassword.trim()) {
+            toast.error("Password does not match");
+        }
+        else {
+            localStorage.setItem("username", Username || "Guest")
+            navigate("/")
+            toast.success('Account created successfully!')
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+
+            // console.log(formData.name)
+            // console.log(formData.password);
+            // console.log(formData.email);
+        }
+        // const response = await fetch('http://127.0.0.1:5000/register', {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         name: formData.name,
+        //         email: formData.email,
+        //         password: formData.password
+        //     })
+        // });
+
+        try {
+            const response = await axios.post(`${API_URL}/register`, {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+            });
+
+            const data = response.data;
+            console.log(data);
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const handleChange = (data) => {
+        setformData({
+            ...formData,
+            [data.target.name]: data.target.value,
+        })
+    }
+    return (
+        <>
+            <section>
+                <div className={`static w-full  ${toggle == true ? "bg-zinc-700 text-white" : "bg-zinc-100 text-black"} font-light gap-2 h-auto grid justify-center p-20`}>
+                    <div className=' shadow-gray-400 bg-zinc-100 shadow-md grid rounded-2xl w-150 h-auto p-10 items-center justify-center'>
+                        <div className='grid grid-cols-1 w-fit h-fit p-2 text-center'>
+                            <span className='text-3xl font-semibold text-[#1C6C93] m-2 tracking-tight inline-block'><strong className='text-[#2D4E63] mr-2 pl-2'>Signup</strong>to EXPENSIO</span>
+                            <span className='text-black tracking-tight inline-block'>Have an account?<strong className='mr-1 pl-1 underline cursor-pointer' ><Link to="/login" className='visited:text-blue-700 active:text-green-300'>Login here!</Link></strong></span>
+                        </div>
+                       
+
+                       
+                    </div>
+                    <div className='w-100 h-auto text-[15spx] justify-center gap-1 p-1 font-medium'>
+                        <span>By using Spendee you agree with Spendee’s</span>
+                        <a className={`underline underline-offset-1 ${toggle == true ? "text-red-400 hover:text-red-500" : "text-gray-900"} cursor-pointer hover:no-underline hover:text-gray-500`}>Terms of Use</a>
+                        <span>, and</span>
+                        <a className={`underline underline-offset-1 ${toggle == true ? "text-red-400 hover:text-red-500" : "text-gray-900"} cursor-pointer hover:no-underline hover:text-gray-500`}> Privacy Policy</a>
+                        <span>Pre-contractual Terms.</span>
+                    </div>
+
+                </div>
+            </section>
+        </>
+    )
+}
+
+export default Register

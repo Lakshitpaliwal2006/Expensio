@@ -1,0 +1,51 @@
+import { useContext, useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from './assets/vite.svg';
+import heroImg from './assets/hero.png';
+import './App.css';
+import Header from "./Components/Header.jsx";
+import Main from "./Components/Main.jsx";
+import { Route, Routes } from "react-router-dom"
+import { useEffect } from 'react';
+import Footer from "./Components/Footer.jsx";
+import Register from "./Pages/Register.jsx"
+import About from './Pages/About.jsx';
+import Overview from './Pages/Overview.jsx';
+import Income_Expenses from './Pages/Income_Expenses.jsx';
+import axios from 'axios';
+import { toast, Toaster } from 'sonner';
+import dotenv, { configDotenv } from "dotenv"
+const API_URL = import.meta.env.VITE_API_URL;
+import { FinanceContext } from './Contexts/FinanceContext.jsx';
+import LoginPage from './Pages/LoginPage.jsx';
+function App() {
+  const { Data, setData } = useContext(FinanceContext);
+  const financeData = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/finance`)
+      setData(response.data)
+
+    } catch (error) {
+      console.log('Some Fetching error', error)
+    }
+  }
+  useEffect(() => {
+    financeData();
+  }, []);
+  return (
+    <>
+      {/* <button onClick={() => toast.success('register')}>Click</button> */}
+      <Header />
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/finance-overview' element={<Income_Expenses />} />
+        <Route path='/overview' element={<Overview />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/login' element={<LoginPage />}></Route>
+      </Routes>
+    </>
+  )
+}
+
+export default App

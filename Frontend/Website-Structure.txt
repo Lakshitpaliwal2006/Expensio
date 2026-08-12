@@ -1,0 +1,114 @@
+Core Dashboard Pages
+
+1. Home Dashboard
+A quick overview of everything:
+
+Total balance (cash + bank + investments)
+Monthly income vs expenses
+Budget progress bars
+Recent transactions
+Alerts (overspending, bills due)
+
+2. Accounts Overview
+
+Bank accounts, wallets, credit cards
+Current balances
+Last synced time
+Option to add/edit accounts
+
+3. Transactions Page
+
+Full transaction list (filterable)
+Categories (food, rent, travel, etc.)
+Search + date range filter
+Auto-categorization suggestions
+Split transactions feature
+Budgeting & Planning
+
+4. Budget Setup Page
+
+Monthly/weekly budget creation
+Category-wise limits
+Savings goals integration
+“Recommended budget” based on history
+
+5. Budget Tracking Page
+
+Visual progress bars per category
+Overspending warnings
+“Remaining this month” indicator
+Comparison with previous months
+
+6. Goals Page
+
+Savings goals (e.g., phone, vacation, emergency fund)
+Progress tracker
+Target date + monthly required savings
+Milestone celebrations
+Analytics Pages
+
+7. Insights & Reports
+
+Spending trends (line/bar charts)
+Top spending categories
+Monthly comparison
+Income vs expense ratio trends
+
+8. Net Worth Page
+
+Assets vs liabilities
+Growth over time
+Breakdown: cash, investments, loans
+
+9. Cash Flow Page
+
+Incoming vs outgoing money timeline
+Predict end-of-month balance
+Recurring expenses highlight
+Bills & Subscriptions
+
+10. Bills Tracker
+
+Upcoming bills list
+Due dates calendar
+Paid/unpaid status
+Reminders and notifications
+
+11. Subscriptions Manager
+
+Active subscriptions (Netflix, gym, etc.)
+Monthly/yearly cost total
+Renewal dates
+“Cancel suggestions” for unused ones
+Tools & Utilities
+
+12. Income & Expense Planner
+
+Add salary, freelance income, side income
+Forecast monthly earnings
+Expense simulation
+
+13. Tax & Savings Calculator (optional)
+
+Simple tax estimation (region-based later)
+Savings growth calculator (compound interest)
+
+14. Receipt Scanner Page (optional advanced)
+
+Upload receipts
+Auto-extract data (OCR concept)
+Store for records
+User & Settings
+
+15. Profile & Settings
+
+Currency selection
+Privacy controls
+Bank sync settings
+Export data (CSV/PDF)
+
+16. Data Export / Import
+
+Download all transactions
+Backup restore system
+Import from bank statements
