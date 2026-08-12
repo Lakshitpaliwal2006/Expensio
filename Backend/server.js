@@ -15,8 +15,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-    res.send("This is Testing Page and its Working");
+app.get('/', (req, res) => {
+    res.send("This is Home Page");
 })
 
 app.post("/register", async (req, res) => {
