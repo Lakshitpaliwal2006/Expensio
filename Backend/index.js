@@ -8,7 +8,7 @@ import SendMail from "./Mail/SendMail.Mail.js";
 import { toast } from "sonner";
 const app = express();
 dotenv.config();
-
+const MONGODB_URL = process.env.MONGODB_URL
 app.use(cors({
     origin: "*",
     credentials: true
@@ -94,7 +94,7 @@ app.post('/verifyotp', async (req, res) => {
 })
 const StartServer = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/register");
+        await mongoose.connect(`${MONGODB_URL}/register`);
         console.log("Mongoose Connected Successfully");
 
         app.listen(process.env.PORT_NO, () => {
