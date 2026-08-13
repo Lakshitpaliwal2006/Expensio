@@ -18,6 +18,8 @@ import dotenv, { configDotenv } from "dotenv"
 const API_URL = import.meta.env.VITE_API_URL;
 import { FinanceContext } from './Contexts/FinanceContext.jsx';
 import LoginPage from './Pages/LoginPage.jsx';
+
+
 function App() {
   const { Data, setData } = useContext(FinanceContext);
   const financeData = async () => {
